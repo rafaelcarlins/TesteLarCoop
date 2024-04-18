@@ -28,7 +28,7 @@ namespace TesteLar.Controllers
         #region eventos
         //as variaveis de tipoTel e numeroTel estão discriminadas para facilitar pegá-las no swagger
         [HttpPost]
-        public IActionResult CadastrarPessoa([FromQuery] Pessoa input, string TipoTelCelular = "Celular", int numeroTelCelular = 0, string TipoTelResidencial = "Residencial", 
+        public IActionResult CadastrarPessoa([FromQuery] PessoaInput input, string TipoTelCelular = "Celular", int numeroTelCelular = 0, string TipoTelResidencial = "Residencial", 
             int numeroTelResidencial = 0, string TipoTelComercial = "Comercial", int numeroTelComercial = 0)
         {
             Pessoa pessoa = new Pessoa();
@@ -41,7 +41,7 @@ namespace TesteLar.Controllers
             //pegando as variáveis de telefone para transformá-las em lista, foi realizado assim para facilitar a parte do swagger
             List<Telefone> telefones = new List<Telefone>();
             telefones = TelefoneEmLista(TipoTelCelular, numeroTelCelular, TipoTelResidencial, numeroTelResidencial, TipoTelComercial, numeroTelComercial);
-
+             
             foreach (var tel in telefones)
             {
                 pessoa.telefones.Add(tel);
